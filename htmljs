@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Demo Project</title>
+  
+</head>
+<body>
+  <h1 id="greeting">Welcome!</h1>
+  <p>Enter your birth year:</p>
+  <input type="number" id="birthYear" />
+  <button onclick="calculateAge()">Calculate Age</button>
+  <p id="ageResult"></p>
+
+  <h2>Favorite Colors</h2>
+  <ul id="colorList"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
+// -----------------------------
+// Part 1: Variables & Conditionals
+// -----------------------------
+
+let userName = "Brenda";
+let currentYear = new Date().getFullYear();
+
+if (userName) {
+  document.getElementById("greeting").textContent = `Hello, ${userName}!`;
+} else {
+  document.getElementById("greeting").textContent = "Hello, Guest!";
+}
+
+// -----------------------------
+// Part 2: Custom Functions
+// -----------------------------
+
+// Function to calculate age
+function calculateAge() {
+  let birthYear = document.getElementById("birthYear").value;
+  let age = currentYear - birthYear;
+  document.getElementById("ageResult").textContent = `You are ${age} years old.`;
+}
+
+// Function to display favorite colors
+function displayColors(colors) {
+  const list = document.getElementById("colorList");
+  list.innerHTML = ""; // Clear previous list
+  colors.forEach(color => {
+    let li = document.createElement("li");
+    li.textContent = color;
+    list.appendChild(li);
+  });
+}
+
+// -----------------------------
+// Part 3: Loops
+// -----------------------------
+
+// Example 1: For loop
+let favoriteColors = ["Blue", "Green", "Purple", "Yellow"];
+for (let i = 0; i < favoriteColors.length; i++) {
+  console.log(`Color ${i + 1}: ${favoriteColors[i]}`);
+}
+
+// Example 2: While loop
+let counter = 0;
+while (counter < 3) {
+  console.log(`Counter is at: ${counter}`);
+  counter++;
+}
+
+// -----------------------------
+// Part 4: DOM Interactions
+// -----------------------------
+
+// Interaction 1: Change heading text (already done above)
+// Interaction 2: Display age result (inside calculateAge function)
+// Interaction 3: Dynamically create list items (inside displayColors function)
+
+// Call displayColors to populate list on load
+displayColors(favoriteColors);
